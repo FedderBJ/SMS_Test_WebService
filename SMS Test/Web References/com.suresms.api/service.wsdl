@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="api.suresms.com/soap/v1" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="api.suresms.com/soap/v1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="api.suresms.com/soap/v1">
+      <s:element name="ValidateUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AccountName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AccountPassword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ValidateUserResult" type="tns:response" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="response">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ResponseCode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseText" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ReadUserBalance">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AccountName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AccountPassword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadUserBalanceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadUserBalanceResult" type="tns:userbalance" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="userbalance">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Balance" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="Currency" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CreateMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AccountName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AccountPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Message" type="tns:message" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="message">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ToPhonenumbers" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MessageText" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MessageID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SenderID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SendAsFlash" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="HasCallBackURL" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequiredDeliveryUTCDateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ScheduleDaily" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ScheduleDailyExceptWeekend" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ScheduleWeekly" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ScheduleMonthly" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ScheduleYearly" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CreateMessageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateMessageResult" type="tns:response" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AccountName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AccountPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MessageID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadMessageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadMessageResult" type="tns:message" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadMessageStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AccountName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AccountPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MessageID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadMessageStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadMessageStatusResult" type="tns:messagestatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="messagestatus">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MessageID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="StatusCode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="StatusText" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReceivedOnUTCDateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequiredDeliveryOnUTCDateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="DispatchedOnUTCDateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="DeliveredOnUTCDateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastKnownStatusOnUTCDateTime" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DeleteMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AccountName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AccountPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MessageID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteMessageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteMessageResult" type="tns:response" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadPrice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AccountName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AccountPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Messages" type="tns:ArrayOfMessage" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfMessage">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="message" nillable="true" type="tns:message" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ReadPriceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadPriceResult" type="tns:price" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="price">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="price" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="Currency" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ReadCoverage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AccountName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AccountPassword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadCoverageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadCoverageResult" type="tns:ArrayOfCoverageItem" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCoverageItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CoverageItem" nillable="true" type="tns:CoverageItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CoverageItem">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Countrycode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CountryName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NumericalSenderID" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="AlphanumericalSenderID" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="DeliveryReport" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="FlashMessage" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ValidateUserSoapIn">
+    <wsdl:part name="parameters" element="tns:ValidateUser" />
+  </wsdl:message>
+  <wsdl:message name="ValidateUserSoapOut">
+    <wsdl:part name="parameters" element="tns:ValidateUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadUserBalanceSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadUserBalance" />
+  </wsdl:message>
+  <wsdl:message name="ReadUserBalanceSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadUserBalanceResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateMessageSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateMessage" />
+  </wsdl:message>
+  <wsdl:message name="CreateMessageSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadMessageSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadMessage" />
+  </wsdl:message>
+  <wsdl:message name="ReadMessageSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadMessageStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadMessageStatus" />
+  </wsdl:message>
+  <wsdl:message name="ReadMessageStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadMessageStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteMessageSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteMessage" />
+  </wsdl:message>
+  <wsdl:message name="DeleteMessageSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadPriceSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadPrice" />
+  </wsdl:message>
+  <wsdl:message name="ReadPriceSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadPriceResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadCoverageSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadCoverage" />
+  </wsdl:message>
+  <wsdl:message name="ReadCoverageSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadCoverageResponse" />
+  </wsdl:message>
+  <wsdl:portType name="SureSMS_SOAP_ServiceSoap">
+    <wsdl:operation name="ValidateUser">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Validate user.</wsdl:documentation>
+      <wsdl:input message="tns:ValidateUserSoapIn" />
+      <wsdl:output message="tns:ValidateUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadUserBalance">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Read User Balance.</wsdl:documentation>
+      <wsdl:input message="tns:ReadUserBalanceSoapIn" />
+      <wsdl:output message="tns:ReadUserBalanceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateMessage">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Create a message.</wsdl:documentation>
+      <wsdl:input message="tns:CreateMessageSoapIn" />
+      <wsdl:output message="tns:CreateMessageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadMessage">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieve a message. MessageID is the MessageID is the MessageID you supplied when sending the message.</wsdl:documentation>
+      <wsdl:input message="tns:ReadMessageSoapIn" />
+      <wsdl:output message="tns:ReadMessageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadMessageStatus">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieve a message status. MessageID is the MessageID is the MessageID you supplied when sending the message.</wsdl:documentation>
+      <wsdl:input message="tns:ReadMessageStatusSoapIn" />
+      <wsdl:output message="tns:ReadMessageStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMessage">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Delete a message. MessageID is the MessageID is the MessageID you supplied when sending the message. </wsdl:documentation>
+      <wsdl:input message="tns:DeleteMessageSoapIn" />
+      <wsdl:output message="tns:DeleteMessageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadPrice">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Calculates the price for sending the message.</wsdl:documentation>
+      <wsdl:input message="tns:ReadPriceSoapIn" />
+      <wsdl:output message="tns:ReadPriceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadCoverage">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of countries that can be reached with SureSMS gateway. If the countrycode is in the list, the SMS gateway can deliver to this country.</wsdl:documentation>
+      <wsdl:input message="tns:ReadCoverageSoapIn" />
+      <wsdl:output message="tns:ReadCoverageSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SureSMS_SOAP_ServiceSoap" type="tns:SureSMS_SOAP_ServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ValidateUser">
+      <soap:operation soapAction="api.suresms.com/soap/v1/ValidateUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadUserBalance">
+      <soap:operation soapAction="api.suresms.com/soap/v1/ReadUserBalance" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateMessage">
+      <soap:operation soapAction="api.suresms.com/soap/v1/CreateMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadMessage">
+      <soap:operation soapAction="api.suresms.com/soap/v1/ReadMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadMessageStatus">
+      <soap:operation soapAction="api.suresms.com/soap/v1/ReadMessageStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMessage">
+      <soap:operation soapAction="api.suresms.com/soap/v1/DeleteMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadPrice">
+      <soap:operation soapAction="api.suresms.com/soap/v1/ReadPrice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadCoverage">
+      <soap:operation soapAction="api.suresms.com/soap/v1/ReadCoverage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SureSMS_SOAP_ServiceSoap12" type="tns:SureSMS_SOAP_ServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ValidateUser">
+      <soap12:operation soapAction="api.suresms.com/soap/v1/ValidateUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadUserBalance">
+      <soap12:operation soapAction="api.suresms.com/soap/v1/ReadUserBalance" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateMessage">
+      <soap12:operation soapAction="api.suresms.com/soap/v1/CreateMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadMessage">
+      <soap12:operation soapAction="api.suresms.com/soap/v1/ReadMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadMessageStatus">
+      <soap12:operation soapAction="api.suresms.com/soap/v1/ReadMessageStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMessage">
+      <soap12:operation soapAction="api.suresms.com/soap/v1/DeleteMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadPrice">
+      <soap12:operation soapAction="api.suresms.com/soap/v1/ReadPrice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadCoverage">
+      <soap12:operation soapAction="api.suresms.com/soap/v1/ReadCoverage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SureSMS_SOAP_Service">
+    <wsdl:port name="SureSMS_SOAP_ServiceSoap" binding="tns:SureSMS_SOAP_ServiceSoap">
+      <soap:address location="http://api.suresms.com/soap/v1/service.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SureSMS_SOAP_ServiceSoap12" binding="tns:SureSMS_SOAP_ServiceSoap12">
+      <soap12:address location="http://api.suresms.com/soap/v1/service.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
